@@ -5,14 +5,13 @@ const mongoose = require("mongoose");
 const path = require("path");
 
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 // Middleware to parse JSON requests
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, 'Public')))
+app.use(express.static(path.join(__dirname, 'frontend')));
 
-
-const mongoURI ="mongodb+srv://kshitudeshmukh3:kshitu123@genai.x4ney.mongodb.net/qa_db?retryWrites=true&w=majority&appName=GenAI"
+const mongoURI = process.env.MONGODB_URI;
 
 mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log("Connected to MongoDB"))
@@ -38,7 +37,7 @@ app.post("/ask", async (req, res) => {
 
     try {
         // Forward the request to the Python script
-        const pythonResponse = await fetch("https://huggingface.co/spaces/Kshitu/AskGen", {
+        const pythonResponse = await fetch("https://huggingface.co/spaces/Kshitu/Genai", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ question })
@@ -66,3 +65,6 @@ app.post("/ask", async (req, res) => {
     }
 });
 
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+});

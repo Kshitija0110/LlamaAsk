@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: question-answer-app
+    env: node
+    plan: free
+    buildCommand: 'npm install'
+    startCommand: 'node server.js'
+    envVars:
+      - key: MONGODB_URI
+        value: "mongodb+srv://kshitudeshmukh3:kshitu123@genai.x4ney.mongodb.net/qa_db?retryWrites=true&w=majority&appName=GenAI"
+      - key: GROQ_API_KEY
+        value: "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"
