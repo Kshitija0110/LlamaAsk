@@ -3,6 +3,7 @@ services:
     name: question-answer-app
     env: node
     plan: free
+    rootDir: backend
     buildCommand: 'npm install'
     startCommand: 'node server.js'
     envVars:
