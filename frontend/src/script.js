@@ -8,7 +8,7 @@ document.getElementById("askButton").addEventListener("click", async () => {
     }
 
     try {
-        const response = await fetch("/ask", {
+        const response = await fetch("https://genai-jjxj.onrender.com/ask", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
