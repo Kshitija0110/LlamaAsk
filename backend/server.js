@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 4000;
 
 // Middleware to parse JSON requests
 app.use(bodyParser.json());
-app.use('/src',express.static(path.join(__dirname, '../frontend/src')));
+app.use(express.static(path.join(__dirname, '../frontend/public')));
 
 const mongoURI = process.env.MONGODB_URI;
 
