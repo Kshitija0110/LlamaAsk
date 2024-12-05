@@ -43,7 +43,9 @@ app.post("/ask", async (req, res) => {
         // Forward the request to the Python script
         const pythonResponse = await fetch("https://huggingface.co/spaces/Kshitu/Genai", {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
+            headers: { "Content-Type": "application/json",
+              "Accept": "application/json"
+             },
             body: JSON.stringify({ question })
         });
 
@@ -69,9 +71,9 @@ app.post("/ask", async (req, res) => {
   }
 });
 
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../frontend/public/index.html'));
-  });
+// app.get('*', (req, res) => {
+    // res.sendFile(path.join(__dirname, '../frontend/public/index.html'));
+  // });
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
