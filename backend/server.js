@@ -41,7 +41,7 @@ app.post("/ask", async (req, res) => {
 
     try {
         // Forward the request to the Python script
-        const pythonResponse = await fetch("https://huggingface.co/spaces/Kshitu/Genai", {
+        const pythonResponse = await fetch("https://kshitu-genai.hf.space/get_answer", {
             method: "POST",
             headers: { "Content-Type": "application/json",
               "Accept": "application/json"
